@@ -9,5 +9,5 @@ export default class App extends Application {
   Resolver = Resolver;
 }
 
-loadInitializers(App, config.modulePrefix);
 
+loadInitializers(App, config.modulePrefix);
