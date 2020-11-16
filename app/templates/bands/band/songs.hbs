@@ -8,7 +8,7 @@
           <span class="float-right">
         <StarRating
                 @rating={{song.rating}}
-                @onUpdate={{fn (mut song.rating)}}
+                @onUpdate={{fn this.updateRating song}}
                 @myparam={{"Hello boy"}}
         />
       </span>
