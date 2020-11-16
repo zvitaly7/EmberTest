@@ -51,7 +51,6 @@ export default class CatalogService extends Service {
   _loadResource(data) {
     let record;
     let {id, type, attributes, relationships} = data;
-    console.log(data)
     if (type === 'bands') {
       let rels = extractRelationships(relationships);
       record = new Band({id, ...attributes}, rels);
@@ -74,7 +73,6 @@ export default class CatalogService extends Service {
     } else {
       record[relationship] = this.load(json);
     }
-    console.log(record[relationship])
     return record[relationship];
   }
 
@@ -118,7 +116,11 @@ export default class CatalogService extends Service {
 
   add(type, record) {
     let collection = type === 'band' ? this.bands : this.songs;
-    collection.push(record);
+    let recordIds = collection.map(record => record.id);
+    if (!recordIds.includes(record.id)) {
+      collection.push(record);
+    }
+    console.log(collection)
   }
 
   get bands() {
